@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Pattern Editor - Advanced</title>
+<style type="text/css">
+<!--
+.style1 {font-family: Arial, Helvetica, sans-serif}
+-->
+</style></head>
+
+<body>
+<h1 align="center"><span class="style1">Pattern Editor - Advanced<a name="top"></a></span></h1>
+<p align="left" class="style1"><a href="#Import">Importing MIDI files and cutting data </a></p>
+<p align="left" class="style1"><a href="#CreateParts">Create new parts</a></p>
+<p align="left" class="style1"><a href="#Scope">Scope, quantise, shuffle </a></p>
+<p align="left" class="style1"><a href="#MIDIChannel">Change MIDI Channel and instrument</a></p>
+<p align="left" class="style1"><a href="#Mute">Mute, Solo, volume of parts and renaming</a></p>
+<p align="left" class="style1"><a href="#Automating">Automating the muting and unmuting of parts</a></p>
+<p align="left" class="style1"><a href="#MorphChannel">Change Morph-Channel </a></p>
+<h3 align="left" class="style1">Importing MIDI files and cutting data<a name="Import"></a></h3>
+<p align="left" class="style1">You can import a MIDI file into LEMu2. The &quot;import MIDI&quot; command is selected it from the &quot;file&quot; menu:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvImportMIDI.gif" width="264" height="128"></p>
+<p align="left" class="style1">When you have imported a MIDI file, there may be little annoying things like it doesn't start on the right beat or whatever. You can trim the data using the &quot;cut' command from &quot;actions&quot; menu:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvCut1.gif" width="235" height="158"> </p>
+<p align="left" class="style1">When this is clicked a popup apears where you can define the start (on the left) and end (right) beats for the trim/crop and then click the &quot;cut&quot; button to implement it. eg, I might want to start from the second bar, so I'll cut from 4 beats up to a very large number:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvCut2.gif" width="235" height="158"></p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<h3 align="left" class="style1">Create new Parts<a name="CreateParts"></a></h3>
+<p align="left" class="style1">To create a new part, click on the add button. A new part will appear in the part list as shown by the red and black arrow below:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvAdd.gif" width="212" height="233"></p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<h3 align="left" class="style1">Scope, Quantise, Shuffle<a name="Scope"></a></h3>
+<p align="left" class="style1"><img src="images/patternEditAdvScQuaShu.gif" width="356" height="56"></p>
+<p align="left" class="style1">Scope controls the length of the loop. You can still edit notes that are beyond the length of the scope, but they won't play unless the scope is made longer. When you move scope, you can see how many beats it covers because the area of the note editor with lines and colouring changes accordingly.</p>
+<p align="left" class="style1">Quantise controls the resolution of beats. If you specify the start time of notes at a small quantisation, eg 0.0, and then make it larger, eg 0.5, the onset of the notes will be shifted to points that are a ratio of 0.5 during playback. The original data is unchanged however, so when you reduce the resolution again to 0.0 the original note onsets that you put in will still be there.</p>
+<p align="left" class="style1">Shuffle works by delaying notes on every second quantised beat. For example, if quantise is 0.25, a note at beat 0.0 or 0.5 would not be delayed, but a note at 0.25 and 0.75 would be. It is delayed by the amount specified by the shuffle control.</p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<h3 align="left" class="style1">Change MIDI Channel and instrument<a name="MIDIChannel"></a></h3>
+<p align="left" class="style1">To change the MIDI channel and instrument that a part sends the notes to, either drag the relevant number up and down or double click the  number and enter a new one:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvMIDIInstChann.gif" width="193" height="97"></p>
+<p align="left" class="style1">Two different parts can have the same channel, although for the purposes of morphing, it is recommended to merge parts with the same MIDI channel together, so that the MIDI channel's volume interpolation is consistent. You can do this easiliy using the &quot;merge same channels&quot; function from the &quot;actions&quot; menu: </p>
+<p align="left" class="style1"><img src="images/patternEditAdvMergeChannels.gif" width="314" height="189"></p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<h3 align="left" class="style1">Mute, Solo, Volume, Renaming<a name="Mute"></a></h3>
+<p align="left" class="style1"><img src="images/patternEditAdvMuteSolVol.gif" width="143" height="32"></p>
+<p align="left" class="style1">On each part in the part list is a control for muting and soloing the part. Once you have clicked mute for one part, muting will have the keyboard focus, so that you can control any of the mutes for any of the parts using the keyboard keys: `, 1, 2, 3 etc. through to 0 (for parts 0 through to 10) and q, ..., y (11 - 16).</p>
+<p align="left" class="style1">Volume:click and drag the number on the  right-hand side, or double click and type to enter the volume information. If your synth wasn't turned on before the pattern started playing, the volume may not have been sent, so you might need to jiggle it to resend the volume information. </p>
+<p align="left" class="style1">You can rename the part by double clicking on the text that is the title. </p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<h3 class="style1">Automating the muting and unmuting of parts<a name="Automating"></a></h3>
+<p class="style1">You can  build a song by recording the actions of muting an unmuting different parts.</p>
+<p class="style1">1. Make sure the   play and record boxes are unselected. They should be dull like this:</p>
+<p class="style1"><img src="images/patternEditAdvRecDull.gif" width="68" height="34"></p>
+<p align="left" class="style1">2. then change the length of the automation loop to make it long enough for the  whole song you are going to record. 5000 beats is pretty safe:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvRecScope.gif" width="213" height="53"></p>
+<p align="left" class="style1">3. from the actions menu, do &quot;clear auto play&quot; to erase any previously recorded actions:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvRecClearAutoP.gif" width="291" height="167"> </p>
+<p align="left" class="style1">4. then set up the mutes how you want them for the beginning of the song. Usually this means muting them all (which you can do with the keyboard as shown above):</p>
+<p align="left" class="style1"><img src="images/patternEditAdvRecMutedStrt.gif" width="216" height="152"></p>
+<p align="left" class="style1">5. Then enable record by pressing the red box so that it is highlighted:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvRecRec.gif" width="99" height="104"> </p>
+<p align="left" class="style1">6. Then press &quot;init&quot; to reset the beat to count from 0. (if, instead, you record from wherever, say beat 50, it will take a long to get to the start of what you have recorded when you play it back!)</p>
+<p align="left" class="style1"><img src="images/patternEditAdvRecInit.gif" width="134" height="68"></p>
+<p align="left" class="style1">7. Now it will start playing from 0 and you can record a sequence of muting and unmuting. If you  want to start again, follow step 3-7 again, but make sure to disable the record button before you re-mute the parts in step 4. </p>
+<p align="left" class="style1">8. If you have finished recording the mute automation, disable record, and enable play:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvPlay.gif" width="78" height="70"> </p>
+<p align="left" class="style1">9. Now click the &quot;init&quot; button again to play the automation that you recorded from the beginning. </p>
+<p align="left" class="style1"><img src="images/patternEditAdvPlayInit.gif" width="129" height="58"></p>
+<p align="left" class="style1">10. If you want to hear it from a certain beat, you can change the lbeat position to anything by using the &quot;set pos&quot; command from the &quot;actions&quot; menu:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvSetPos.gif" width="285" height="181"></p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<h3 align="left" class="style1">Change Morph Channel <a name="MorphChannel"></a></h3>
+<p align="left" class="style1">You can move the part up and down in the list using the up and down buttons:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvMorphChannelU.gif" width="158" height="140"></p>
+<p align="left" class="style1">This changes the &quot;morph-channel&quot; of the part. The morph-channel is shown on the left had side of each part:</p>
+<p align="left" class="style1"><img src="images/patternEditAdvMorphChannel.gif" width="146" height="116"></p>
+<p align="left" class="style1">Parts in the current pattern will morph into the parts that are on the same morph channel in the pattern being morphed to. If one part in a pattern is on morph-channel 0 and another part in a different pattern is also on morph channel 0 and the patterns are connected by a morph, the two parts will be morphed together, regardless of differences in their MIDI channel and/or instrument.</p>
+<p align="left" class="style1"><strong>Note: </strong>it is not a good idea to morph parts that have the same MIDI channel but different instruments because tons of program change messages will need to be processed and MIDI was not designed for that.</p>
+<p align="left" class="style1">The morph algorithm for  each morph channel can be specified separately within the different tabs of the morph editor. To find out more goto <a href="morphEditAdvanced.htm">Morph Editor - Advanced </a></p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<p align="left" class="style1">&nbsp;</p>
+<p align="left" class="style1">Please direct qestions and comments to Rene Wooller r.wooller@qut.edu.au </p>
+<p align="left" class="style1">&nbsp; </p>
+<p align="left" class="style1">&nbsp; </p>
+<h3 align="left" class="style1">&nbsp;</h3>
+<p align="left" class="style1">&nbsp;</p>
+<p align="left" class="style1">&nbsp;</p>
+<p align="left" class="style1">&nbsp; </p>
+</body>
+</html>

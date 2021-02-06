@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Morph Editor - Advanced</title>
+<style type="text/css">
+<!--
+.style1 {font-family: Arial, Helvetica, sans-serif}
+.style3 {font-style: italic; font-family: Arial, Helvetica, sans-serif;}
+.style4 {font-family: "Courier New", Courier, mono}
+-->
+</style></head>
+
+<body>
+<h1 align="center"><span class="style1">Morph Editor - Advanced<a name="top"></a></span></h1>
+<p align="left"><span class="style1"><a href="#mcs">Morph Channels</a></span></p>
+<p align="left"><span class="style1"><a href="#cps">Common parameters </a></span></p>
+<p align="left"><span class="style1"><a href="#ws">Weighted Selection</a></span></p>
+<p align="left" class="style1"><a href="#mm">Makov Morph </a></p>
+<p align="left" class="style1"><a href="#pm">Priority Morph</a></p>
+<h3 align="left" class="style1">Morph Channels<a name="mcs"></a> </h3>
+<p align="left" class="style1">In the morph editor, there is a tab for each &quot;morph-channel&quot; (&quot;morph-channel&quot; terminology introduced in <a href="patternEditAdvanced.htm#MorphChannel">pattern editor - Morph Channels</a>) .</p>
+<p align="left" class="style1"><img src="images/morphEdAdvMCs.gif" width="736" height="74"></p>
+<p align="left" class="style1">If one pattern has more parts that the other, the excess parts still exist on a single morph channel, like any other part, but they morph into silence.</p>
+<p align="left" class="style1">Each tab allows a number of independent settings to be tailored to the particular parts that are being morphed. </p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<h3 align="left" class="style1">Common Parameters<a name="cps"></a> </h3>
+<p align="left" class="style1">No matter what algorithm is selected, there are some parameters that are common (which is not to say they are global - they are still indepedant).</p>
+<p align="left" class="style1">Firstly, you can affect the gradient (GR) and cross-over (CO) point for the morph-index that is being fed into the selected algorithm that will create the musical structure (notes etc). This is abbreviated from structure to &quot;struc&quot;:</p>
+<p align="left" class="style1"><img src="images/morphEdAdvStruc.gif" width="216" height="108"></p>
+<p align="left" class="style1">Here is a diagram to explain the cross-over point and gradient: </p>
+<p align="left" class="style1"><img src="images/morphEditAdvGrCO.gif" width="594" height="131"> </p>
+<p align="left" class="style1">If you leave the CO and GR as they are, the morph-index being fed into the structural composition algorithm will increase smoothly from 0 to 1 during the transition. </p>
+<p align="left" class="style1">Sometimes we actually want the change to occur very quickly in the middle of the transition, in which case we would leave the CO, and reduce the GR variable to near 0.1. (The actual gradient that is used is calculated as 1/GR, so that we can reach big gradients more easily).</p>
+<p align="left" class="style1">If we want the main structural changes for this part to occur early on in the transition, we would shift the cross-over CO to an earier time. </p>
+<p align="left" class="style1">A similar function is available for other parameters that are being interpolated: scope, quantise and shuffle.</p>
+<p align="left" class="style3">Volume / timbre fading parameters </p>
+<p align="left" class="style1">If the two parts being morphed have the same MIDI Channel, the volume is interpolated from one to the other, with volume CO influenceing the cross-over and &quot;earliness&quot; influenceing the gradient.</p>
+<p align="left" class="style1">More commonly, the parts will have different MIDI Channels and the same musical patterns are played on both while the volume of one fades out and the the volume of the other one fades in. In this case, &quot;earliness&quot; controls the gradient for <em>both</em> volume fades, and volume CO controls the cross-over point of the fade. </p>
+<p align="left" class="style1">If parts have different MIDI channels, and you don't want the music to be played on both channels simultaneously, you can select &quot;alternate&quot; from the second drop down menu:</p>
+<p align="left" class="style1"><img src="images/morphEdAdvSelAlt.gif" width="234" height="143"></p>
+<p align="left" class="style1">Otherwise, stick with &quot;together&quot; </p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<h3 align="left" class="style1">Weighted Selection<a name="ws"></a></h3>
+<p align="left" class="style1">Weighted selection algorithm is good for morphing between rhythmic parts when a fairly steady pulse is needed but some interesting chopping is allowed.</p>
+<p align="left" class="style1"><img src="images/morphEdAdvWeight.gif" width="210" height="158"> </p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<h3 align="left" class="style1">Markov Morph<a name="mm"></a></h3>
+<p align="left" class="style1">Markov morph is better for melodic parts.</p>
+<p align="left" class="style1"><img src="images/morphEdAdvMarkSels.gif" width="211" height="146"></p>
+<p align="left" class="style1">The pitch rhythm and start weights influence how much of a factor the pitch rhythm or start-time is when asctertaining the similarity of notes, and thus when deciding which note follows well from the current note:</p>
+<p align="left" class="style1"><img src="images/morphEdAdvMarkPRSWeight.gif" width="396" height="251"></p>
+<p align="left" class="style1">The higher the start-time weight is, the more similar the algorithm becomes to weighted selection.</p>
+<p align="left" class="style1">Markov Depth controls how many notes are being matched from the seed to the patterns. </p>
+<p align="left" class="style1"><img src="images/morphEdAdvMarkDepth.gif" width="130" height="215"></p>
+<p align="left" class="style1">The higher it is, the less chance there is of finding a match, but the more chance there is of finding a good match when it does find it. To have it high, you need a fairly large number of notes in the source patterns. (bear in mind that notes which are beyond the scope (loop length) of a pattern are analysed also, so this is a way of including extra musical material, like a database of music). </p>
+<p align="left" class="style1">When matching on  start-time, it is possible to control the rhythmic cycles within which beats are considered to be &quot;similar&quot;. So if mod (modulus) eight is high, a note with a start time of 7.75 is similar to a note with a start-time of 0.0 and a note with a start time of 4.0 is very different. However, if mod four is made higher, then 4.0 would be considered to be very close to 0.0 and 7.75. </p>
+<p align="left" class="style1"><img src="images/morphEdAdvMarkMods.gif" width="377" height="222"></p>
+<p align="left" class="style1">When the pitch sensitivity and start time sensitivity are high, they accentuate the differences between pitches and start-times respectively, when analysing the seed against the patterns for a match. </p>
+<p align="left" class="style1"><img src="images/morphEdAdvMarkSensit.gif" width="211" height="212"></p>
+<p align="left" class="style1">When they are low, the similarities are enhanced. This makes it more likely to find a match, but it will probably not be that good a match. These parameters can be balanced somewhat against the Markov Depth. </p>
+<p align="left" class="style1">When the morph is over, some statistics of how well the morph went are printed to screen, for each morph channel implementing markov morph:</p>
+<p align="left" class="style1"><span class="style4"> for morph channel 1<br>
+  null prediction rate was 1.0<br>
+  stream lost rate was 0.0<br>
+for morph channel 2<br>
+null prediction rate was 0.8852459016393442<br>
+stream lost rate was 0.0<br>
+for morph channel 3<br>
+null prediction rate was 0.7377049180327869<br>
+stream lost rate was 0.06557377049180328<br>
+for morph channel 4<br>
+null prediction rate was 0.0<br>
+stream lost rate was 0.0</span>
+</p>
+<p align="left" class="style1"><em>Null prediction</em> is the decimal % of time that a match couldn't be found during analysis and the algorithm had to fall back on weighted selection. If null-predicition is high , as it is for morph channels 1, 2 and 3  above, one might think about reducing the markov depth or reducing the sensitivity of pitch or starttime (obviously, only effective if the weights of pitch and start time are greater than 0). </p>
+<p align="left" class="style1">You can't really do anything about stream loss, so don't worry about it. </p>
+<p align="left" class="style1"><a href="#top">top</a></p>
+<h3 align="left" class="style1">Priority Morph<a name="pm"></a></h3>
+<p align="left" class="style1">Priority morph is good if the morph it tricky, and you need more control over when notes drop in or out, or if you want one note/phrase to persist while others drop out. </p>
+<p align="left" class="style1"><img src="images/morphEdAdvPriority.gif" width="220" height="148"></p>
+<p align="left" class="style1">Priority morph allows complete control over the the existence of notes from either pattern during the morph. It can be painstaking to use though, especially with large patterns. </p>
+<p align="left" class="style1">You may have noticed in the pattern editor, that each note had a number on one end of it. This is the priority of that note. You can drag the number up or down to change the priority, or double click on it to type the priority out manually. </p>
+<p align="left" class="style1"><img src="images/morphEdAdvPriorNote.gif" width="108" height="80"></p>
+<p align="left" class="style1">All notes start with a priority of 50 (priority is 1-100)</p>
+<p align="left" class="style1">With priority morph, as the morph-index progresses, the notes  with priority below the morph-index (imagine the index is scaled to go from 1-100) are filtered out from the pattern that we coming from, while notes that are above  100 - morph-index in the destination pattern are gradually revealed. </p>
+<p align="left" class="style1"> <a href="#top">top</a> </p>
+<p align="left" class="style1">&nbsp;</p>
+<p align="left" class="style1">&nbsp;</p>
+<p align="left" class="style1">&nbsp;</p>
+</body>
+</html>

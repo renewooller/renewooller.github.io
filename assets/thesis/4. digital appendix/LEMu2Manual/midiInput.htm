@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Setting MIDI Input</title>
+<style type="text/css">
+<!--
+.style1 {font-family: Arial, Helvetica, sans-serif}
+-->
+</style></head>
+
+<body>
+<h1 align="center"><span class="style1">Adding MIDI Controller Input </span></h1>
+<p align="left"><span class="style1">Currently, you can map a MIDI controller to control only one  special parameter in LEMu2: the morph index of the currently playing morph (ie, the position of the little green ball that  moves from one pattern to the other, indicating where the morph is up to) . Heres how: </span></p>
+<ol class="style1">
+  <li>First, click on the MIDI IO menu and select make Midi IO:</li>
+</ol>
+<p align="center"><img src="images/midiIOMake.gif" width="135" height="97"></p>
+<ol start="2" class="style1">
+  <li>In the MIDI IO window that appears before you, click the add input button. An input location will appear in the field on the left (eg channel 15, controller 127): </li>
+</ol>
+<p><img src="images/midiIOmakeInput.gif" width="360" height="280"></p>
+<ol start="3" class="style1">
+  <li>Then click on the &quot;set input&quot; button: </li>
+</ol>
+<p><img src="images/midiIOsetLocationButton.gif" width="356" height="790"></p>
+<p><span class="style1">4. in the new popup window, click &quot;learn MIDI&quot;. (Note that with these little windows, you have to exit them before you can back to another window): </span></p>
+<p><span class="style1"> <img src="images/midiIOsetLocation.gif" width="321" height="70"></span></p>
+<p><span class="style1">5. Then move the MIDI controller that you want to use to control the morph position. When you have moved it, click stop learn:</span></p>
+<p><img src="images/midiIOsetLocation2.gif" width="321" height="70"></p>
+<p class="style1">6. To make sure you are recieving MIDI you can check what MIDI is coming in using the midi input text tab </p>
+<p class="style1"><img src="images/midiIOText.gif" width="315" height="67"></p>
+<p><span class="style1">7. Now that the MIDI input is set, we need to make it control something (the morph position). Click the &quot;link&quot; button:</span></p>
+<p><img src="images/midiIOLinkButton.gif" width="356" height="790"></p>
+<p><span class="style1">8. In the &quot;link midi location to parameters&quot; window, click on &quot;morph position&quot; on the left, then &quot;morph position&quot; in the middle, and you will see another morph position appear on the right. <strong>Don't click this right hand side one unless you want to remove the link.</strong></span></p>
+<p><img src="images/midiIOLinkWindow.gif" width="428" height="245"></p>
+<p><span class="style1">9. Get rid of the MIDI IO window. Now that MIDI input is set to control the morph index you should save the settings (midi settings need to be saved separately at the moment) </span></p>
+<p><img src="images/midiIOSave.gif" width="297" height="95"></p>
+<p class="style1">Done!</p>
+</body>
+</html>
